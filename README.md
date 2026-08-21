@@ -176,10 +176,10 @@ tests/
 
 ### 6. Observações
 
-## Em produção o app roda com HTTPS no Railway.
-## A câmera do celular funciona melhor em contexto seguro (https://).
-## Em desenvolvimento via IP da rede local, use o upload de imagem do QR Code se a câmera for bloqueada.
-## Autenticação SPA com Sanctum (sessão + cookies).
+Em produção o app roda com HTTPS no Railway.
+A câmera do celular funciona melhor em contexto seguro (https://).
+Em desenvolvimento via IP da rede local, use o upload de imagem do QR Code se a câmera for bloqueada.
+Autenticação SPA com Sanctum (sessão + cookies).
 
 ### Autor - Drakar
 Desenvolvido como projeto de portfólio full stack (Laravel + Vue).
