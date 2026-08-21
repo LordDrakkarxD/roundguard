@@ -106,7 +106,9 @@ Foi construído com foco em código limpo, stack atual e estrutura próxima de u
 git clone https://github.com/SEU_USUARIO/roundguard.git
 cd roundguard
 
-2. Suba o ambiente com Sail
+---
+
+### 2. Suba o ambiente com Sail
 
 docker run --rm -v $(pwd):/app -w /app composer install
 cp .env.example .env
@@ -116,7 +118,7 @@ cp .env.example .env
 ./vendor/bin/sail npm install
 ./vendor/bin/sail npm run build
 
-3. Acesse
+### 3. Acesse
 
 http://localhost
 
@@ -158,12 +160,12 @@ resources/
 tests/
   Feature/
 
-Observações
+### Observações
 
-# Em produção o app roda com HTTPS no Railway.
-# A câmera do celular funciona melhor em contexto seguro (https://).
-# Em desenvolvimento via IP da rede local, use o upload de imagem do QR Code se a câmera for bloqueada.
-# Autenticação SPA com Sanctum (sessão + cookies).
+## Em produção o app roda com HTTPS no Railway.
+## A câmera do celular funciona melhor em contexto seguro (https://).
+## Em desenvolvimento via IP da rede local, use o upload de imagem do QR Code se a câmera for bloqueada.
+## Autenticação SPA com Sanctum (sessão + cookies).
 
-Autor - Drakar
+### Autor - Drakar
 Desenvolvido como projeto de portfólio full stack (Laravel + Vue).
