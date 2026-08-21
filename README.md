@@ -123,25 +123,25 @@ cp .env.example .env
 
 http://localhost
 
-Scripts úteis
+### 4. Scripts úteis
 
-# Subir / parar
+## Subir / parar
 ./vendor/bin/sail up -d
 ./vendor/bin/sail down
 
-# Migrations + seeders
+## Migrations + seeders
 ./vendor/bin/sail artisan migrate:fresh --seed
 
-# Frontend (dev)
+## Frontend (dev)
 ./vendor/bin/sail npm run dev
 
-# Build de produção
+## Build de produção
 ./vendor/bin/sail npm run build
 
-# Testes
+## Testes
 ./vendor/bin/sail pest
 
-Estrutura principal
+### 5. Estrutura principal
 
 app/
   Http/
@@ -161,7 +161,7 @@ resources/
 tests/
   Feature/
 
-### Observações
+### 6. Observações
 
 ## Em produção o app roda com HTTPS no Railway.
 ## A câmera do celular funciona melhor em contexto seguro (https://).
