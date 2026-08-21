@@ -32,4 +32,4 @@ ENV PORT=8080
 EXPOSE 8080
 
 # Sobe o app
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT
+CMD php artisan config:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT
