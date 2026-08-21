@@ -111,6 +111,7 @@ cd roundguard
 
 ### 2. Suba o ambiente com Sail
 
+```bash
 docker run --rm -v $(pwd):/app -w /app composer install
 cp .env.example .env
 ./vendor/bin/sail up -d
@@ -118,6 +119,7 @@ cp .env.example .env
 ./vendor/bin/sail artisan migrate --seed
 ./vendor/bin/sail npm install
 ./vendor/bin/sail npm run build
+```
 
 ### 3. Acesse
 
@@ -126,23 +128,33 @@ http://localhost
 ### 4. Scripts úteis
 
 ## Subir / parar
+```bash
 ./vendor/bin/sail up -d
 ./vendor/bin/sail down
+```
 
 ## Migrations + seeders
+```bash
 ./vendor/bin/sail artisan migrate:fresh --seed
+```
 
 ## Frontend (dev)
+```bash
 ./vendor/bin/sail npm run dev
+```
 
 ## Build de produção
+```bash
 ./vendor/bin/sail npm run build
+```
 
 ## Testes
+```bash
 ./vendor/bin/sail pest
+```
 
 ### 5. Estrutura principal
-
+```bash
 app/
   Http/
     Controllers/Api/
@@ -160,6 +172,7 @@ resources/
     stores/
 tests/
   Feature/
+```
 
 ### 6. Observações
 
