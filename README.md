@@ -127,28 +127,28 @@ http://localhost
 
 ### 4. Scripts úteis
 
-## Subir / parar
+- Subir / parar
 ```bash
 ./vendor/bin/sail up -d
 ./vendor/bin/sail down
 ```
 
-## Migrations + seeders
+- Migrations + seeders
 ```bash
 ./vendor/bin/sail artisan migrate:fresh --seed
 ```
 
-## Frontend (dev)
+- Frontend (dev)
 ```bash
 ./vendor/bin/sail npm run dev
 ```
 
-## Build de produção
+- Build de produção
 ```bash
 ./vendor/bin/sail npm run build
 ```
 
-## Testes
+- Testes
 ```bash
 ./vendor/bin/sail pest
 ```
@@ -176,10 +176,10 @@ tests/
 
 ### 6. Observações
 
-Em produção o app roda com HTTPS no Railway.
-A câmera do celular funciona melhor em contexto seguro (https://).
-Em desenvolvimento via IP da rede local, use o upload de imagem do QR Code se a câmera for bloqueada.
-Autenticação SPA com Sanctum (sessão + cookies).
+- Em produção o app roda com HTTPS no Railway.
+- A câmera do celular funciona melhor em contexto seguro (https://).
+- Em desenvolvimento via IP da rede local, use o upload de imagem do QR Code se a câmera for bloqueada.
+- Autenticação SPA com Sanctum (sessão + cookies).
 
 ### Autor - Drakar
-Desenvolvido como projeto de portfólio full stack (Laravel + Vue).
+- Desenvolvido como projeto de portfólio full stack (Laravel + Vue).
