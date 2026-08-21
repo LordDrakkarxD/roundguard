@@ -4,6 +4,8 @@ Sistema de Controle de Rondas com QR Code.
 
 Variação moderna do sistema SISVIGIA, desenvolvida como projeto full stack para portfólio.
 
+**Demo em produção:** [https://roundguard-production.up.railway.app](https://roundguard-production.up.railway.app)
+
 ---
 
 ## Sobre o projeto
@@ -26,19 +28,23 @@ Foi construído com foco em código limpo, stack atual e estrutura próxima de u
 - Listagem de registros com filtros (agente, ponto, mês e ano)
 - Dashboard com estatísticas em tempo real
 - CRUD de usuários com atribuição de roles
+- Log de atividades (Spatie Activity Log)
 - Restrições por perfil (agente vê apenas seus próprios registros)
+- Form Requests para validação
+- Testes automatizados com Pest
 
 ---
 
 ## Stack
 
 ### Backend
-- PHP 8.5
+- PHP 8.4+
 - Laravel 13
 - PostgreSQL
 - Laravel Sanctum
 - Spatie Laravel Permission
-- Laravel Sail (Docker)
+- Spatie Laravel Activity Log
+- Laravel Sail (Docker — desenvolvimento)
 
 ### Frontend
 - Vue 3 (Composition API)
@@ -49,28 +55,61 @@ Foi construído com foco em código limpo, stack atual e estrutura próxima de u
 - Vite
 - html5-qrcode
 
+### Qualidade
+- Pest (testes Feature)
+
+### Deploy
+- Railway (app + PostgreSQL)
+
 ---
 
-## Requisitos
+## Demo
+
+- **URL:** [https://roundguard-production.up.railway.app](https://roundguard-production.up.railway.app)
+
+### Usuários de teste
+
+| Perfil     | Login                         | Senha    |
+|------------|-------------------------------|----------|
+| Admin      | `admin` / `admin@gmail.com`   | `123`    |
+| Developer  | `dev`   / `dev@gmail.com`     | `123`    |
+| Agente     | `teste` / `teste@gmail.com`   | `123`    |
+
+---
+
+## Perfis e permissões
+
+| Funcionalidade             | Admin | Supervisor | Agente |
+|----------------------------|-------|------------|--------|
+| Dashboard                  | ✅    | ✅         | ✅     |
+| Registros de Ronda         | ✅    | ✅         | ✅ (apenas os próprios) |
+| Novo registro (scan)       | ✅    | ✅         | ✅     |
+| Excluir registros          | ✅    | ✅         | ❌     |
+| Pontos de Ronda (CRUD)     | ✅    | ✅         | ❌     |
+| Usuários (CRUD)            | ✅    | ❌         | ❌     |
+| Log de Atividades          | ✅    | ❌         | ❌     |
+
+---
+
+## Requisitos (desenvolvimento local)
 
 - Docker + Docker Compose
 - Git
 
 ---
 
-## Como rodar o projeto
+## Como rodar localmente
 
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/roundguard.git
+git clone https://github.com/SEU_USUARIO/roundguard.git
 cd roundguard
 
-2. Suba os containers
-./vendor/bin/sail up -d
+2. Suba o ambiente com Sail
 
-Na primeira vez, se ainda não tiver as dependências:
-docker run --rm -v $(pwd):/app composer install
+docker run --rm -v $(pwd):/app -w /app composer install
+cp .env.example .env
 ./vendor/bin/sail up -d
 ./vendor/bin/sail artisan key:generate
 ./vendor/bin/sail artisan migrate --seed
@@ -78,26 +117,26 @@ docker run --rm -v $(pwd):/app composer install
 ./vendor/bin/sail npm run build
 
 3. Acesse
+
 http://localhost
 
-Usuários de teste
+Scripts úteis
 
-Perfil Usuário/E-mail + Senha
+# Subir / parar
+./vendor/bin/sail up -d
+./vendor/bin/sail down
 
-Admin admin / admin@gmail.com 123456
-Dev dev / dev@gmail.com 123456
-Vigilante teste teste@gmail.com 123456
+# Migrations + seeders
+./vendor/bin/sail artisan migrate:fresh --seed
 
-Perfis e permissões
+# Frontend (dev)
+./vendor/bin/sail npm run dev
 
-Funcionalidade/Admin/Supervisor/Vigilante
+# Build de produção
+./vendor/bin/sail npm run build
 
-Dashboard✅✅✅
-Registros de Ronda✅✅✅ (apenas os próprios)
-Novo registro (scan)✅✅✅
-Excluir registros✅✅❌
-Pontos de Ronda (CRUD)✅✅❌
-Usuários (CRUD)✅❌❌
+# Testes
+./vendor/bin/sail pest
 
 Estrutura principal
 
@@ -116,29 +155,15 @@ resources/
       users/
     router/
     stores/
-
-Scripts úteis
-
-# Subir o ambiente
-./vendor/bin/sail up -d
-
-# Parar
-./vendor/bin/sail down
-
-# Rodar migrations + seeders
-./vendor/bin/sail artisan migrate:fresh --seed
-
-# Frontend em desenvolvimento
-./vendor/bin/sail npm run dev
-
-# Build de produção
-./vendor/bin/sail npm run build
+tests/
+  Feature/
 
 Observações
 
-* A câmera do celular só funciona em contexto seguro (localhost ou HTTPS).
-* Em desenvolvimento via IP da rede local, use o upload de imagem do QR Code.
-* O projeto usa autenticação baseada em sessão (SPA + Sanctum).
+# Em produção o app roda com HTTPS no Railway.
+# A câmera do celular funciona melhor em contexto seguro (https://).
+# Em desenvolvimento via IP da rede local, use o upload de imagem do QR Code se a câmera for bloqueada.
+# Autenticação SPA com Sanctum (sessão + cookies).
 
-Autor
-Desenvolvido por [Drakar] como projeto de portfólio full stack.
+Autor - Drakar
+Desenvolvido como projeto de portfólio full stack (Laravel + Vue).
